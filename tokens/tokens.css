@@ -1,0 +1,155 @@
+/* =================================================================
+   public imaging — Design Tokens
+   Version 1.0 · Single Source of Truth (CSS Custom Properties)
+   Schrift: ausschließlich Urbanist. Kein Times New Roman.
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     1 · FARBE — Kernpalette
+     --------------------------------------------------------------- */
+  --pi-elb-gruen:      #15231E;  /* Primär: dunkle Flächen, Headlines, Text auf Hell */
+  --pi-kontor-leinen:  #F6F3ED;  /* Dominante Hintergrundfarbe (warmes Creme)        */
+  --pi-honig-gold:     #E6A23C;  /* Akzent: max. 10 % Fläche pro Ansicht             */
+  --pi-speicher-grau:  #6A6F6B;  /* Fließtext, sekundäre UI                          */
+  --pi-kuehler-salbei: #858C84;  /* Dekorative Flächen, Overlays                     */
+  --pi-nardo-grau:     #838484;  /* Captions, Metadaten                              */
+  --pi-soft-black:     #0D0D0D;  /* Tiefster Ton — niemals reines #000               */
+  --pi-pure-white:     #FFFFFF;  /* Content-Flächen (Karten) — sparsam               */
+
+  /* ---------------------------------------------------------------
+     2 · FARBE — Interaktions-Shades (für Hover/Active von Buttons)
+     --------------------------------------------------------------- */
+  --pi-elb-gruen-hover:   #1D3029;  /* Elb-Grün etwas heller (Hover auf dunklem Button) */
+  --pi-elb-gruen-active:  #0F1A16;  /* Elb-Grün dunkler (Active)                         */
+  --pi-honig-gold-hover:  #D9942F;  /* Gold etwas tiefer (Hover)                         */
+  --pi-honig-gold-active: #C68526;  /* Gold dunkler (Active)                             */
+  --pi-leinen-shade:      #ECE7DC;  /* Creme einen Tick dunkler (Hover auf hellem Grund) */
+  --pi-leinen-shade-2:    #E2DCCD;  /* Creme noch dunkler (Active)                       */
+
+  /* ---------------------------------------------------------------
+     3 · FARBE — Semantisch (gedeckt, hanseatisch — kein Neon)
+     --------------------------------------------------------------- */
+  --pi-positive: #4B7A5E;  /* Erfolg — gedecktes Salbeigrün */
+  --pi-caution:  #C68A2E;  /* Hinweis — tiefes Gold         */
+  --pi-critical: #A84B3C;  /* Fehler — gedecktes Backstein  */
+  --pi-positive-bg: rgba(75, 122, 94, 0.10);
+  --pi-caution-bg:  rgba(198, 138, 46, 0.10);
+  --pi-critical-bg: rgba(168, 75, 60, 0.10);
+
+  /* ---------------------------------------------------------------
+     4 · FARBE — Semantische Aliase (so referenziert man im Code)
+     --------------------------------------------------------------- */
+  --pi-bg:             var(--pi-kontor-leinen);  /* Standard-Seitenhintergrund      */
+  --pi-bg-dark:        var(--pi-elb-gruen);       /* Dunkle Sektion / dunkle Slide   */
+  --pi-surface:        var(--pi-pure-white);      /* Karte/Panel auf hellem Grund    */
+  --pi-surface-dark:   rgba(246, 243, 237, 0.06); /* Panel auf dunklem Grund         */
+
+  --pi-text:           var(--pi-elb-gruen);       /* Primärtext auf Hell             */
+  --pi-text-muted:     var(--pi-speicher-grau);   /* Sekundärtext auf Hell           */
+  --pi-text-faint:     var(--pi-nardo-grau);      /* Captions/Meta auf Hell          */
+  --pi-text-on-dark:        var(--pi-kontor-leinen);     /* Primärtext auf Dunkel    */
+  --pi-text-on-dark-muted:  rgba(246, 243, 237, 0.60);   /* Sekundärtext auf Dunkel  */
+  --pi-text-on-dark-faint:  rgba(246, 243, 237, 0.38);   /* Captions auf Dunkel      */
+
+  --pi-accent:         var(--pi-honig-gold);
+  --pi-line:           rgba(21, 35, 30, 0.10);    /* Hairline auf Hell               */
+  --pi-line-strong:    rgba(21, 35, 30, 0.18);
+  --pi-line-on-dark:   rgba(246, 243, 237, 0.14); /* Hairline auf Dunkel             */
+  --pi-focus-ring:     var(--pi-honig-gold);
+
+  /* ---------------------------------------------------------------
+     5 · TYPOGRAFIE — ausschließlich Urbanist
+     --------------------------------------------------------------- */
+  --pi-font-sans: "Urbanist", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --pi-font: var(--pi-font-sans);
+
+  --pi-weight-light:     300;
+  --pi-weight-regular:   400;
+  --pi-weight-medium:    500;
+  --pi-weight-semibold:  600;
+  --pi-weight-bold:      700;
+  --pi-weight-extrabold: 800;
+
+  /* UI-Typoskala (rem, Root 16px) — Verhältnis ~1.25 */
+  --pi-text-2xs:  0.6875rem;  /* 11px — Overline/Label              */
+  --pi-text-xs:   0.75rem;    /* 12px — Caption                     */
+  --pi-text-sm:   0.875rem;   /* 14px — klein                       */
+  --pi-text-base: 1rem;       /* 16px — Fließtext                   */
+  --pi-text-md:   1.125rem;   /* 18px — großer Fließtext/Subhead    */
+  --pi-text-lg:   1.5rem;     /* 24px — H3                          */
+  --pi-text-xl:   2rem;       /* 32px — H2                          */
+  --pi-text-2xl:  2.75rem;    /* 44px — H1                          */
+  --pi-text-3xl:  3.5rem;     /* 56px — Display klein               */
+  --pi-text-4xl:  4.5rem;     /* 72px — Display groß                */
+
+  /* Laufweite */
+  --pi-tracking-tight:   -0.02em;  /* Headlines                     */
+  --pi-tracking-tighter: -0.04em;  /* große Display-Zahlen          */
+  --pi-tracking-normal:  0;
+  --pi-tracking-wide:    0.12em;    /* Buttons/UI-Labels            */
+  --pi-tracking-label:   0.2em;     /* Overlines (Versalien)        */
+  --pi-tracking-wordmark: -0.075em; /* Logo-Setzung                 */
+
+  /* Zeilenhöhe */
+  --pi-leading-display: 1.05;
+  --pi-leading-tight:   1.15;
+  --pi-leading-snug:    1.3;
+  --pi-leading-normal:  1.6;
+  --pi-leading-relaxed: 1.75;
+
+  /* Lesbreite */
+  --pi-measure: 68ch;
+
+  /* ---------------------------------------------------------------
+     6 · ABSTÄNDE — 4-pt-Skala
+     --------------------------------------------------------------- */
+  --pi-space-1:  0.25rem;  /*  4px */
+  --pi-space-2:  0.5rem;   /*  8px */
+  --pi-space-3:  0.75rem;  /* 12px */
+  --pi-space-4:  1rem;     /* 16px */
+  --pi-space-5:  1.5rem;   /* 24px */
+  --pi-space-6:  2rem;     /* 32px */
+  --pi-space-7:  3rem;     /* 48px */
+  --pi-space-8:  4rem;     /* 64px */
+  --pi-space-9:  6rem;     /* 96px */
+  --pi-space-10: 8rem;     /* 128px */
+
+  /* ---------------------------------------------------------------
+     7 · RADIUS — die Marke bleibt kantig (max. 2px)
+     --------------------------------------------------------------- */
+  --pi-radius-none:     0;
+  --pi-radius-hairline: 2px;   /* Standard für Karten/Buttons       */
+  --pi-radius-pill:     999px; /* nur für Tags/Chips, sparsam       */
+
+  /* ---------------------------------------------------------------
+     8 · SCHATTEN — subtil, niemals hart
+     --------------------------------------------------------------- */
+  --pi-shadow-sm: 0 1px 2px rgba(21, 35, 30, 0.05);
+  --pi-shadow-md: 0 8px 24px rgba(21, 35, 30, 0.07);
+  --pi-shadow-lg: 0 18px 48px rgba(21, 35, 30, 0.10);
+
+  /* ---------------------------------------------------------------
+     9 · BEWEGUNG — filmisch, nie federnd
+     --------------------------------------------------------------- */
+  --pi-ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --pi-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --pi-duration-fast: 200ms;
+  --pi-duration-base: 350ms;
+  --pi-duration-slow: 600ms;
+
+  /* ---------------------------------------------------------------
+     10 · LAYOUT
+     --------------------------------------------------------------- */
+  --pi-content-max:    1200px;
+  --pi-content-narrow: 760px;
+  --pi-divider-width:  48px;  /* Standardlänge der Gold-Trennlinie  */
+
+  /* ---------------------------------------------------------------
+     11 · FOLIEN (16:9)
+     --------------------------------------------------------------- */
+  --pi-slide-w: 1280px;
+  --pi-slide-h: 720px;
+  --pi-slide-pad: 72px;          /* Sicherheitsrand auf Folien       */
+  --pi-slide-accent: 6px;        /* Stärke der Gold-Akzentlinie      */
+}

@@ -1,0 +1,223 @@
+/* =================================================================
+   public imaging — Slide Framework (16:9)
+   Voraussetzung: tokens.css + Urbanist geladen.
+   Folien skalieren proportional über Container-Query-Units (cqw):
+   1cqw = 1 % der Folienbreite. Referenz: 1280 × 720.
+   ================================================================= */
+
+/* ---------------------------------------------------------------
+   FOLIEN-CONTAINER
+   --------------------------------------------------------------- */
+.pi-slide {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--pi-kontor-leinen);
+  color: var(--pi-elb-gruen);
+  font-family: var(--pi-font-sans);
+}
+
+/* Hintergrund-Varianten */
+.pi-slide--leinen { background: var(--pi-kontor-leinen); color: var(--pi-elb-gruen); }
+.pi-slide--gruen  { background: var(--pi-elb-gruen);     color: var(--pi-kontor-leinen); }
+.pi-slide--weiss  { background: var(--pi-pure-white);    color: var(--pi-elb-gruen); }
+
+/* Gold-Akzentlinie am rechten Rand — das Markensignal jeder Folie */
+.pi-slide--accent::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 0.5cqw;
+  min-width: 4px;
+  background: var(--pi-honig-gold);
+}
+
+/* Sicherer Innenbereich */
+.pi-slide__inner {
+  position: absolute;
+  inset: 0;
+  padding: 5.6cqw 6cqw;
+  display: flex;
+  flex-direction: column;
+}
+.pi-slide__inner--center { justify-content: center; }
+.pi-slide__inner--between { justify-content: space-between; }
+.pi-slide__inner--end { justify-content: flex-end; }
+
+/* ---------------------------------------------------------------
+   FOLIEN-TYPOGRAFIE (cqw-basiert)
+   --------------------------------------------------------------- */
+.pi-slide-overline {
+  font-size: 1.05cqw;
+  font-weight: var(--pi-weight-semibold);
+  letter-spacing: var(--pi-tracking-label);
+  text-transform: uppercase;
+  color: var(--pi-honig-gold);
+}
+.pi-slide-kicker {
+  font-size: 1.05cqw;
+  font-weight: var(--pi-weight-semibold);
+  letter-spacing: var(--pi-tracking-label);
+  text-transform: uppercase;
+  color: var(--pi-kuehler-salbei);
+}
+.pi-slide-title {
+  font-weight: var(--pi-weight-extrabold);
+  font-size: 6.6cqw;
+  line-height: var(--pi-leading-display);
+  letter-spacing: var(--pi-tracking-tight);
+}
+.pi-slide-title--xl { font-size: 9cqw; }
+.pi-slide-title--sm { font-size: 4.6cqw; }
+.pi-slide-subtitle {
+  font-weight: var(--pi-weight-light);
+  font-size: 2cqw;
+  line-height: var(--pi-leading-snug);
+  color: inherit;
+  opacity: 0.85;
+}
+.pi-slide-body {
+  font-weight: var(--pi-weight-regular);
+  font-size: 1.5cqw;
+  line-height: var(--pi-leading-normal);
+  max-width: 46cqw;
+}
+.pi-slide-lead {
+  font-weight: var(--pi-weight-light);
+  font-size: 1.9cqw;
+  line-height: var(--pi-leading-snug);
+  max-width: 56cqw;
+}
+
+/* Große Kennzahl */
+.pi-slide-stat {
+  font-weight: var(--pi-weight-extrabold);
+  font-size: 11cqw;
+  line-height: 0.9;
+  letter-spacing: var(--pi-tracking-tighter);
+  color: var(--pi-honig-gold);
+}
+.pi-slide-stat-label {
+  font-size: 1.25cqw;
+  font-weight: var(--pi-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.7;
+  margin-top: 1cqw;
+}
+
+/* Zitat */
+.pi-slide-quote {
+  font-weight: var(--pi-weight-light);
+  font-size: 3.4cqw;
+  line-height: var(--pi-leading-tight);
+  letter-spacing: var(--pi-tracking-tight);
+  max-width: 70cqw;
+}
+.pi-slide-quote__mark {
+  font-weight: var(--pi-weight-extrabold);
+  font-size: 9cqw;
+  line-height: 0.5;
+  color: var(--pi-honig-gold);
+  display: block;
+  margin-bottom: 1.5cqw;
+}
+.pi-slide-quote__cite {
+  margin-top: 3cqw;
+  font-size: 1.3cqw;
+  font-weight: var(--pi-weight-semibold);
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------
+   FOLIEN-BAUSTEINE
+   --------------------------------------------------------------- */
+/* Gold-Hairline-Trenner */
+.pi-slide-divider { width: 6cqw; height: 0.22cqw; min-height: 2px; background: var(--pi-honig-gold); border: none; margin: 2.4cqw 0; }
+
+/* Fußzeile: Wortmarke links, Seitenzahl rechts */
+.pi-slide-footer {
+  position: absolute;
+  left: 6cqw; right: 6cqw; bottom: 4cqw;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pi-slide-footer__brand {
+  font-weight: var(--pi-weight-extrabold);
+  letter-spacing: var(--pi-tracking-wordmark);
+  font-size: 1.4cqw;
+  text-transform: lowercase;
+}
+.pi-slide-footer__page { font-size: 1.1cqw; font-weight: var(--pi-weight-medium); opacity: 0.5; }
+
+/* Logo-Bild in der Fußzeile */
+.pi-slide-footer__logo { height: 2.2cqw; width: auto; }
+
+/* Zwei-Spalten-Inhalt */
+.pi-slide-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5cqw;
+  align-items: center;
+  flex: 1;
+}
+.pi-slide-cols--13 { grid-template-columns: 1fr 1.6fr; }
+
+/* Aufzählung mit Gold-Marker */
+.pi-slide-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.6cqw; }
+.pi-slide-list li {
+  position: relative;
+  padding-left: 2.4cqw;
+  font-size: 1.5cqw;
+  line-height: var(--pi-leading-snug);
+}
+.pi-slide-list li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.55cqw;
+  width: 1cqw; height: 0.2cqw; min-height: 2px;
+  background: var(--pi-honig-gold);
+}
+
+/* Daten-Raster (mehrere Kennzahlen) */
+.pi-slide-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4cqw;
+  flex: 1;
+  align-content: center;
+}
+.pi-slide-stats .pi-slide-stat { font-size: 7cqw; }
+
+/* Vollflächiges Bild (Bleed) */
+.pi-slide-image {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+/* Abdunkler für Text über Bild */
+.pi-slide-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(21,35,30,0.85) 0%, rgba(21,35,30,0.15) 55%, transparent 100%);
+}
+
+/* Kapitel-Nummer (Trennfolie) */
+.pi-slide-chapter-no {
+  font-weight: var(--pi-weight-extrabold);
+  font-size: 16cqw;
+  line-height: 0.8;
+  letter-spacing: var(--pi-tracking-tighter);
+  color: rgba(230, 162, 60, 0.9);
+}
+
+/* ---------------------------------------------------------------
+   DECK-WRAPPER (Doku/Vorschau): zentriert, max 1100px
+   --------------------------------------------------------------- */
+.pi-deck { display: flex; flex-direction: column; gap: var(--pi-space-7); }
+.pi-deck .pi-slide {
+  box-shadow: var(--pi-shadow-lg);
+  border-radius: var(--pi-radius-hairline);
+}

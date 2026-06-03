@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>public imaging — Folien-Templates</title>
+<link rel="icon" href="../assets/logo/pi-favicon-dunkel.png">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../css/design-system.css">
+<link rel="stylesheet" href="../css/slides.css">
+<style>
+  body { padding: var(--pi-space-8) var(--pi-space-6) var(--pi-space-10); }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .page-head { margin-bottom: var(--pi-space-8); }
+  .tpl-label { margin: var(--pi-space-7) 0 var(--pi-space-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <span class="pi-kicker">public imaging · Präsentationssystem</span>
+    <h1 class="pi-display" style="margin-top: var(--pi-space-3);">Folien-Templates</h1>
+    <p class="pi-lead" style="margin-top: var(--pi-space-4);">Acht Standard-Layouts im 16:9-Format. Reines Urbanist, Gold-Akzentlinie rechts, Kontor-Leinen und Elb-Grün im Wechsel. Jede Folie skaliert proportional.</p>
+  </header>
+
+  <div class="pi-deck">
+
+    <!-- 1 · COVER -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">01 · Cover</p>
+    <div class="pi-slide pi-slide--gruen pi-slide--accent">
+      <div class="pi-slide__inner pi-slide__inner--between pi-on-dark">
+        <div>
+          <span class="pi-slide-overline">Präsentation · 2026</span>
+          <h2 class="pi-slide-title pi-slide-title--xl" style="margin-top: 2.5cqw;">Folien-<br>Master</h2>
+          <p class="pi-slide-kicker" style="margin-top: 2cqw; color: var(--pi-honig-gold);">Fintech-Kommunikation</p>
+        </div>
+        <div style="display: grid; grid-template-columns: auto auto; gap: 6cqw;">
+          <div><div class="pi-slide-kicker">Vorgestellt von</div><div style="font-size:1.4cqw; margin-top:0.6cqw;">public imaging GmbH</div></div>
+          <div><div class="pi-slide-kicker">Mandant</div><div style="font-size:1.4cqw; margin-top:0.6cqw;">Beispiel-Firma 3000</div></div>
+        </div>
+      </div>
+      <div class="pi-slide-footer pi-on-dark">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">01</span>
+      </div>
+    </div>
+
+    <!-- 2 · KAPITEL-TRENNER -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">02 · Kapitel-Trenner</p>
+    <div class="pi-slide pi-slide--gruen pi-slide--accent">
+      <div class="pi-slide__inner pi-slide__inner--center pi-on-dark">
+        <span class="pi-slide-chapter-no">01</span>
+        <h2 class="pi-slide-title pi-slide-title--sm" style="margin-top: 1.5cqw;">Ausgangslage &amp; Markt</h2>
+        <hr class="pi-slide-divider">
+        <p class="pi-slide-subtitle" style="max-width: 50cqw;">Wo Ihre Marke heute steht — und welche Chance vor Ihnen liegt.</p>
+      </div>
+      <div class="pi-slide-footer pi-on-dark">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">02</span>
+      </div>
+    </div>
+
+    <!-- 3 · CONTENT (Liste) -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">03 · Content mit Aufzählung</p>
+    <div class="pi-slide pi-slide--leinen pi-slide--accent">
+      <div class="pi-slide__inner">
+        <span class="pi-slide-overline">Unsere Leistungen</span>
+        <h2 class="pi-slide-title pi-slide-title--sm" style="margin-top: 1.5cqw;">360-Grad-Kommunikation</h2>
+        <ul class="pi-slide-list" style="margin-top: 3cqw;">
+          <li><strong style="font-weight:var(--pi-weight-bold);">Finanz-PR</strong> — Pressearbeit, Media Relations, datengetriebene PR</li>
+          <li><strong style="font-weight:var(--pi-weight-bold);">Content &amp; Event</strong> — Podcasts, Webinare, Studio-Produktionen</li>
+          <li><strong style="font-weight:var(--pi-weight-bold);">Marketing</strong> — Content Marketing, Native Advertising, Branding</li>
+        </ul>
+      </div>
+      <div class="pi-slide-footer">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-gruen.png" alt="public imaging">
+        <span class="pi-slide-footer__page">03</span>
+      </div>
+    </div>
+
+    <!-- 4 · ZWEI-SPALTEN MIT BILD -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">04 · Zwei Spalten mit Bild</p>
+    <div class="pi-slide pi-slide--leinen pi-slide--accent">
+      <div class="pi-slide__inner">
+        <div class="pi-slide-cols pi-slide-cols--13">
+          <div>
+            <span class="pi-slide-overline">Im Profil</span>
+            <h2 class="pi-slide-title pi-slide-title--sm" style="margin-top: 1.5cqw;">Arne Pflugrad</h2>
+            <p class="pi-slide-body" style="margin-top: 2cqw;">Managing Director. Dreißig Jahre Erfahrung in der Finanzkommunikation — von der Pressemitteilung bis zur Kapitalmarktstrategie.</p>
+          </div>
+          <div style="aspect-ratio: 4/5; overflow: hidden; border-radius: var(--pi-radius-hairline);">
+            <img src="../assets/img/portrait-bw-1.png" alt="Porträt" style="width:100%; height:100%; object-fit: cover; object-position: center; filter: grayscale(1); background: var(--pi-leinen-shade);">
+          </div>
+        </div>
+      </div>
+      <div class="pi-slide-footer">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-gruen.png" alt="public imaging">
+        <span class="pi-slide-footer__page">04</span>
+      </div>
+    </div>
+
+    <!-- 5 · DATEN / KENNZAHLEN -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">05 · Daten &amp; Kennzahlen</p>
+    <div class="pi-slide pi-slide--gruen pi-slide--accent">
+      <div class="pi-slide__inner pi-on-dark">
+        <span class="pi-slide-overline">Erfolgsgeschichten</span>
+        <div class="pi-slide-stats" style="margin-top: 2cqw;">
+          <div><div class="pi-slide-stat">9</div><div class="pi-slide-stat-label">Kunden in 5 Ländern</div></div>
+          <div><div class="pi-slide-stat">30+</div><div class="pi-slide-stat-label">Jahre Erfahrung</div></div>
+          <div><div class="pi-slide-stat">50&nbsp;Mio.</div><div class="pi-slide-stat-label">Impressions 2025</div></div>
+        </div>
+      </div>
+      <div class="pi-slide-footer pi-on-dark">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">05</span>
+      </div>
+    </div>
+
+    <!-- 6 · ZITAT -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">06 · Zitat / Pull-Quote</p>
+    <div class="pi-slide pi-slide--gruen pi-slide--accent">
+      <div class="pi-slide__inner pi-slide__inner--center pi-on-dark">
+        <span class="pi-slide-quote__mark">&#8222;</span>
+        <p class="pi-slide-quote">Wir machen Kommunikation nicht lauter. Wir machen sie relevanter.</p>
+        <p class="pi-slide-quote__cite">— Markenleitsatz public imaging</p>
+      </div>
+      <div class="pi-slide-footer pi-on-dark">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">06</span>
+      </div>
+    </div>
+
+    <!-- 7 · VOLLBILD MIT TEXT -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">07 · Vollflächiges Bild mit Text</p>
+    <div class="pi-slide pi-slide--accent">
+      <img class="pi-slide-image" src="../assets/img/portrait-bw-2.png" alt="" style="object-position: center; background: var(--pi-kuehler-salbei);">
+      <div class="pi-slide-scrim"></div>
+      <div class="pi-slide__inner pi-slide__inner--end pi-on-dark" style="position: relative;">
+        <span class="pi-slide-overline">Behind the Scenes</span>
+        <h2 class="pi-slide-title pi-slide-title--sm" style="margin-top: 1.5cqw; max-width: 60cqw;">Substanz beginnt beim Menschen.</h2>
+      </div>
+      <div class="pi-slide-footer pi-on-dark" style="position: absolute;">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">07</span>
+      </div>
+    </div>
+
+    <!-- 8 · SCHLUSS -->
+    <p class="tpl-label pi-kicker pi-kicker--muted">08 · Schluss / Kontakt</p>
+    <div class="pi-slide pi-slide--gruen pi-slide--accent">
+      <div class="pi-slide__inner pi-slide__inner--center pi-on-dark">
+        <span class="pi-slide-overline">Sprechen wir.</span>
+        <h2 class="pi-slide-title" style="margin-top: 2cqw;">Danke.</h2>
+        <hr class="pi-slide-divider">
+        <div style="font-size: 1.4cqw; line-height: var(--pi-leading-normal); opacity: 0.85;">
+          public imaging GmbH · Moorfuhrtweg 11 · 22301 Hamburg<br>
+          info@publicimaging.de · www.publicimaging.de
+        </div>
+      </div>
+      <div class="pi-slide-footer pi-on-dark">
+        <img class="pi-slide-footer__logo" src="../assets/logo/pi-logo-weiss.png" alt="public imaging">
+        <span class="pi-slide-footer__page">08</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

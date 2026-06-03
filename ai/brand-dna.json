@@ -1,0 +1,113 @@
+{
+  "$schema": "public-imaging-brand-dna/v2",
+  "version": "2.0",
+  "note": "Design-System-Variante: ausschließlich Urbanist, KEIN Times New Roman.",
+
+  "brand_identity": {
+    "name": "public imaging",
+    "wordmark_case": "immer kleingeschrieben",
+    "type": "PR- und Marketing-Agentur",
+    "sector": "Finanz-, Wirtschafts-, Immobilien-, Fintech-Kommunikation",
+    "founded": 1996,
+    "hq": "Hamburg (Goldbekhöfe, Moorfuhrtweg 11, 22301 Hamburg)",
+    "second_office": "Frankfurt am Main",
+    "managing_directors": "Peter Ehlers, Arne Pflugrad"
+  },
+
+  "brand_personality": {
+    "core": "Hanseatische Souveränität trifft modernen Zeitgeist",
+    "values": ["Substanz", "Relevanz", "Vertrauen", "Weitblick", "Haltung"],
+    "tone": "Klar, souverän, warm, präzise",
+    "not": "Laut, protzig, flapsig, überheblich, vage"
+  },
+
+  "color_system": {
+    "primary": {
+      "elb_gruen":     { "hex": "#15231E", "token": "--pi-elb-gruen",     "use": "Headlines, dunkle Flächen, Text auf Hell" },
+      "kontor_leinen": { "hex": "#F6F3ED", "token": "--pi-kontor-leinen", "use": "Dominante Hintergrundfarbe" }
+    },
+    "accent": {
+      "honig_gold":    { "hex": "#E6A23C", "token": "--pi-honig-gold",    "use": "Akzent — max. 10 % Fläche pro Ansicht" }
+    },
+    "secondary": {
+      "speicher_grau":  { "hex": "#6A6F6B", "token": "--pi-speicher-grau",  "use": "Fließtext, UI" },
+      "kuehler_salbei": { "hex": "#858C84", "token": "--pi-kuehler-salbei", "use": "Dekorative Flächen" },
+      "nardo_grau":     { "hex": "#838484", "token": "--pi-nardo-grau",     "use": "Captions, Metadaten" }
+    },
+    "forbidden": ["#000000 (reines Schwarz)", "neon_colors", "pastels", "Farbverläufe zwischen Markenfarben", "Gradient-Text"],
+    "ratio_by_weight": { "kontor_leinen": "40%", "elb_gruen": "25%", "white": "15%", "greys": "12%", "honig_gold": "8%" }
+  },
+
+  "typography": {
+    "rule": "AUSSCHLIESSLICH Urbanist. Times New Roman wird NICHT verwendet — weder für Headlines noch Fließtext.",
+    "family": "Urbanist",
+    "source": "https://fonts.google.com/specimen/Urbanist",
+    "weights": {
+      "300_light": "großer Lead-Text, Subtitles, Zitate",
+      "400_regular": "Fließtext",
+      "500_medium": "UI, Buttons sekundär, Tags",
+      "600_semibold": "Overlines, Labels, Subheads",
+      "700_bold": "H2/H3-Headlines",
+      "800_extrabold": "Display, H1, große Zahlen, Wortmarke"
+    },
+    "tracking": {
+      "headlines": "-0.02em",
+      "grosse_zahlen": "-0.04em",
+      "labels_overlines": "0.2em (Versalien)",
+      "buttons_ui": "0.12em (Versalien)",
+      "wordmark": "-0.075em"
+    },
+    "rules": [
+      "Keine zweite oder dritte Schrift.",
+      "Overlines und Buttons immer in Versalien mit Sperrung.",
+      "Lange Fließtexte nie in Versalien.",
+      "Headlines fett (700–800), Fließtext regular (400), großer Lead light (300)."
+    ]
+  },
+
+  "logo": {
+    "structure": "Wortmarke 'public imaging' — beide Wörter kleingeschrieben, Urbanist ExtraBold mit enger Laufweite (-0.075em)",
+    "variants": ["dunkel (Elb-Grün) auf hellem Grund", "hell (Kontor-Leinen) auf dunklem Grund"],
+    "files": ["assets/logo/pi-logo-gruen.png", "assets/logo/pi-logo-weiss.png"],
+    "clear_space": "Mindestabstand = Höhe des Buchstabens 'p'",
+    "forbidden": ["verzerren", "rotieren", "Schatten", "Verläufe", "umfärben", "auf unruhigem Grund platzieren"]
+  },
+
+  "photography": {
+    "style": "Schwarz-Weiß, editorial, ruhig, souverän",
+    "subjects": "freigestellte Menschen (Porträts), Hamburger Architektur, Motion-Blur als Signatur (Schärfe im Zentrum, Bewegung außen)",
+    "treatment": "grayscale(1), warme bis neutrale Tonwerte, kein HDR, keine grellen Blitze",
+    "do_not": ["Stockfotos mit Handschlag", "aufgesetztes Lächeln", "Neonfarben", "sterile Büros", "Startup-Klischees"]
+  },
+
+  "voice": {
+    "principles": [
+      "Klar, nicht kompliziert.",
+      "Souverän, nicht arrogant.",
+      "Präzise, nicht trocken.",
+      "Warm, nicht weich."
+    ],
+    "never_use": ["inflationäre Superlative (führend, weltweit einzigartig, revolutionär)", "Marketing-Sprech (Synergien heben)", "Ausrufezeichen in professioneller Kommunikation"],
+    "always": ["aktive Sprache", "konkrete Zahlen statt vager Behauptungen", "kurze und lange Sätze mischen", "Leser direkt ansprechen"]
+  },
+
+  "design_system": {
+    "border_radius": "max. 2px — niemals Pillen oder stark gerundet (Ausnahme: Tags/Chips)",
+    "buttons": "Elb-Grün (primär) oder Honig-Gold (Akzent); Versalien, gesperrt, 2px Radius, min. 44px Höhe",
+    "hover": "subtiler Shade-Wechsel, Gold-Unterstrich bei Links",
+    "shadows": "subtil, rgba(21,35,30, 0.05–0.10), nie hart",
+    "motion": "cubic-bezier(0.22, 1, 0.36, 1), filmisch, nie federnd/elastisch",
+    "spacing": "4-pt-Skala, großzügiger Weißraum",
+    "gold_rule": "Honig-Gold ist Akzent, nie Fläche — max. 10 % pro Ansicht"
+  },
+
+  "slides": {
+    "format": "16:9 (1280 × 720 Referenz)",
+    "backgrounds": ["Kontor-Leinen (hell)", "Elb-Grün (dunkel)", "Pure White (Content)"],
+    "accent": "Honig-Gold-Linie am rechten Rand jeder Folie (0.5cqw / min. 4px)",
+    "safe_area": "72px / 5.6cqw Innenrand",
+    "templates": ["Cover", "Kapitel-Trenner", "Content mit Aufzählung", "Zwei Spalten mit Bild", "Daten & Kennzahlen", "Zitat", "Vollbild mit Text", "Schluss/Kontakt"],
+    "type": "Display-Zahlen bis 11cqw, Titel 6.6cqw, Body 1.5cqw — alles Urbanist",
+    "footer": "Wortmarke links, Seitenzahl rechts"
+  }
+}

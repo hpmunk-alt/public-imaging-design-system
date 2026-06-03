@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>public imaging — Design System</title>
+<meta name="description" content="Das markenkonforme Design-System von public imaging. Tokens, Komponenten und Folien-Templates auf Urbanist-Basis — für KI-gestützte, markentreue Präsentationen und Interfaces.">
+<link rel="icon" href="assets/logo/pi-favicon-dunkel.png">
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/slides.css">
+<style>
+  /* Doku-spezifisches Layout (nutzt die Tokens) */
+  .ds-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--pi-space-4) var(--pi-space-6);
+    background: rgba(246, 243, 237, 0.9);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--pi-line);
+  }
+  .ds-nav__brand { display: flex; align-items: center; gap: var(--pi-space-3); }
+  .ds-nav__brand img { height: 22px; width: auto; }
+  .ds-nav__links { display: flex; gap: var(--pi-space-5); flex-wrap: wrap; }
+  @media (max-width: 760px) { .ds-nav__links { display: none; } }
+
+  .ds-wrap { max-width: var(--pi-content-max); margin: 0 auto; padding: 0 var(--pi-space-6); }
+  .ds-section { padding: var(--pi-space-9) 0; border-top: 1px solid var(--pi-line); }
+  .ds-section:first-of-type { border-top: none; }
+  .ds-section__head { margin-bottom: var(--pi-space-7); }
+
+  .ds-hero { padding: var(--pi-space-10) 0 var(--pi-space-9); }
+
+  .ds-grid { display: grid; gap: var(--pi-space-5); }
+  .ds-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .ds-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .ds-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 760px) { .ds-grid--2, .ds-grid--3, .ds-grid--4 { grid-template-columns: 1fr; } }
+
+  /* Farb-Swatch */
+  .ds-swatch { border: 1px solid var(--pi-line); border-radius: var(--pi-radius-hairline); overflow: hidden; }
+  .ds-swatch__color { height: 96px; }
+  .ds-swatch__meta { padding: var(--pi-space-3) var(--pi-space-4); background: var(--pi-surface); }
+  .ds-swatch__name { font-weight: var(--pi-weight-semibold); font-size: var(--pi-text-sm); }
+  .ds-swatch__hex { font-size: var(--pi-text-xs); color: var(--pi-text-faint); font-variant-numeric: tabular-nums; }
+  .ds-swatch__var { font-size: var(--pi-text-2xs); color: var(--pi-nardo-grau); margin-top: 2px; }
+
+  /* Demo-Block + Code */
+  .ds-demo {
+    border: 1px solid var(--pi-line); border-radius: var(--pi-radius-hairline);
+    padding: var(--pi-space-6); background: var(--pi-surface);
+    display: flex; flex-wrap: wrap; gap: var(--pi-space-4); align-items: center;
+  }
+  .ds-demo--dark { background: var(--pi-elb-gruen); }
+  .ds-demo--stack { flex-direction: column; align-items: stretch; }
+  .ds-code {
+    margin: var(--pi-space-3) 0 0;
+    background: var(--pi-elb-gruen); color: var(--pi-kontor-leinen);
+    border-radius: var(--pi-radius-hairline);
+    padding: var(--pi-space-4) var(--pi-space-5);
+    font-family: "SF Mono", "Fira Code", Consolas, monospace;
+    font-size: var(--pi-text-xs); line-height: 1.7;
+    overflow-x: auto; white-space: pre;
+  }
+  .ds-code .t { color: var(--pi-honig-gold); }
+
+  .ds-label-row { margin-bottom: var(--pi-space-4); }
+  .ds-type-row { display: flex; align-items: baseline; gap: var(--pi-space-5); padding: var(--pi-space-4) 0; border-bottom: 1px solid var(--pi-line); }
+  .ds-type-row__meta { min-width: 130px; }
+  .ds-type-row__meta b { font-size: var(--pi-text-sm); display: block; }
+  .ds-type-row__meta span { font-size: var(--pi-text-xs); color: var(--pi-text-faint); }
+
+  .ds-space-bar { background: var(--pi-honig-gold); height: 16px; border-radius: 1px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="ds-nav">
+  <div class="ds-nav__brand">
+    <img src="assets/logo/pi-logo-gruen.png" alt="public imaging">
+    <span class="pi-kicker pi-kicker--muted" style="font-size: var(--pi-text-2xs);">Design System</span>
+  </div>
+  <div class="ds-nav__links">
+    <a class="pi-nav-link" href="#foundations">Foundations</a>
+    <a class="pi-nav-link" href="#components">Komponenten</a>
+    <a class="pi-nav-link" href="#slides">Folien</a>
+    <a class="pi-nav-link" href="#ai">Für KI</a>
+    <a class="pi-nav-link" href="https://github.com/hpmunk-alt/public-imaging-design-system">GitHub</a>
+  </div>
+</nav>
+
+<div class="ds-wrap">
+
+  <!-- HERO -->
+  <header class="ds-hero">
+    <span class="pi-kicker">public imaging · Version 1.0</span>
+    <h1 class="pi-display" style="margin-top: var(--pi-space-4); font-size: clamp(2.5rem, 7vw, 4.5rem);">Ein System.<br>Ein Look.</h1>
+    <p class="pi-lead" style="margin-top: var(--pi-space-5); font-size: var(--pi-text-lg);">Das markenkonforme Design-System von public imaging. Farb-Tokens, Web-Komponenten und Folien-Templates — vollständig auf <strong style="color: var(--pi-elb-gruen); font-weight: var(--pi-weight-bold);">Urbanist</strong> aufgebaut. Gemacht, damit Mensch und KI den Marken-Look jederzeit sauber reproduzieren können.</p>
+    <div style="display: flex; gap: var(--pi-space-3); margin-top: var(--pi-space-6); flex-wrap: wrap;">
+      <a class="pi-btn pi-btn--accent" href="#components">Komponenten ansehen</a>
+      <a class="pi-btn pi-btn--secondary" href="examples/slides.html">Folien-Templates</a>
+      <a class="pi-btn pi-btn--ghost" href="ai/AI-GUIDE.md">KI-Guide</a>
+    </div>
+  </header>
+
+  <!-- ===================== FOUNDATIONS ===================== -->
+  <section class="ds-section" id="foundations">
+    <div class="ds-section__head">
+      <span class="pi-kicker">Foundations</span>
+      <h2 class="pi-h1" style="margin-top: var(--pi-space-3);">Die Grundlagen</h2>
+      <p class="pi-body" style="margin-top: var(--pi-space-4);">Farbe, Schrift, Abstand, Form und Bewegung. Jeder Wert lebt als Token in <code style="font-family: monospace; font-size: 0.85em; color: var(--pi-honig-gold-active);">tokens.css</code> / <code style="font-family: monospace; font-size: 0.85em; color: var(--pi-honig-gold-active);">tokens.json</code> — nie hartkodiert.</p>
+    </div>
+
+    <!-- Farbe -->
+    <h3 class="pi-h3" style="margin-bottom: var(--pi-space-5);">Farbe</h3>
+    <div class="ds-grid ds-grid--4">
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#15231E"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Elb-Grün</div><div class="ds-swatch__hex">#15231E</div><div class="ds-swatch__var">--pi-elb-gruen</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#F6F3ED"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Kontor-Leinen</div><div class="ds-swatch__hex">#F6F3ED</div><div class="ds-swatch__var">--pi-kontor-leinen</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#E6A23C"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Honig-Gold</div><div class="ds-swatch__hex">#E6A23C</div><div class="ds-swatch__var">--pi-honig-gold</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#6A6F6B"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Speicher-Grau</div><div class="ds-swatch__hex">#6A6F6B</div><div class="ds-swatch__var">--pi-speicher-grau</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#858C84"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Kühler Salbei</div><div class="ds-swatch__hex">#858C84</div><div class="ds-swatch__var">--pi-kuehler-salbei</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#838484"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Nardo-Grau</div><div class="ds-swatch__hex">#838484</div><div class="ds-swatch__var">--pi-nardo-grau</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#0D0D0D"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Soft-Black</div><div class="ds-swatch__hex">#0D0D0D</div><div class="ds-swatch__var">--pi-soft-black</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch__color" style="background:#FFFFFF; box-shadow: inset 0 0 0 1px rgba(21,35,30,0.08)"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Pure White</div><div class="ds-swatch__hex">#FFFFFF</div><div class="ds-swatch__var">--pi-pure-white</div></div></div>
+    </div>
+    <div class="pi-note" style="margin-top: var(--pi-space-6);">
+      <span class="pi-note__kicker">Verhältnis</span>
+      <p class="pi-note__body">Kontor-Leinen 40 % · Elb-Grün 25 % · Weiß 15 % · Grautöne 12 % · Honig-Gold max. 8 %. Gold ist Akzent, nie Fläche.</p>
+    </div>
+
+    <!-- Typografie -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Typografie — nur Urbanist</h3>
+    <div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>Display</b><span>800 · 72px</span></div><div class="pi-display">Substanz</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>H1</b><span>800 · 44px</span></div><div class="pi-h1">Relevanz vor Lautstärke</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>H2</b><span>700 · 32px</span></div><div class="pi-h2">Kommunikation, die wirkt</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>H3</b><span>700 · 24px</span></div><div class="pi-h3">Finanz-PR mit Tiefe</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>Lead</b><span>300 · 18px</span></div><div class="pi-lead" style="margin:0;">Datengetriebene Kommunikation, seit drei Jahrzehnten.</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>Body</b><span>400 · 16px</span></div><div class="pi-body" style="margin:0;">public imaging verbindet Finanz-Know-how mit redaktioneller Tiefe.</div></div>
+      <div class="ds-type-row"><div class="ds-type-row__meta"><b>Overline</b><span>600 · 11px · 0.2em</span></div><div class="pi-kicker">Brand Guideline</div></div>
+    </div>
+
+    <!-- Abstände -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Abstände — 4-pt-Skala</h3>
+    <div style="display: flex; flex-direction: column; gap: var(--pi-space-3);">
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-2 · 8</span><div class="ds-space-bar" style="width:8px"></div></div>
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-4 · 16</span><div class="ds-space-bar" style="width:16px"></div></div>
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-5 · 24</span><div class="ds-space-bar" style="width:24px"></div></div>
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-6 · 32</span><div class="ds-space-bar" style="width:32px"></div></div>
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-7 · 48</span><div class="ds-space-bar" style="width:48px"></div></div>
+      <div style="display:flex; align-items:center; gap: var(--pi-space-4);"><span class="pi-caption" style="min-width: 80px;">space-8 · 64</span><div class="ds-space-bar" style="width:64px"></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== KOMPONENTEN ===================== -->
+  <section class="ds-section" id="components">
+    <div class="ds-section__head">
+      <span class="pi-kicker">Komponenten</span>
+      <h2 class="pi-h1" style="margin-top: var(--pi-space-3);">Bausteine fürs Interface</h2>
+      <p class="pi-body" style="margin-top: var(--pi-space-4);">Jede Komponente ist eine CSS-Klasse mit <code style="font-family:monospace;font-size:.85em;color:var(--pi-honig-gold-active);">pi-</code>-Präfix. Markup kopieren, fertig.</p>
+    </div>
+
+    <!-- Buttons -->
+    <h3 class="pi-h3" style="margin-bottom: var(--pi-space-5);">Buttons</h3>
+    <div class="ds-demo">
+      <button class="pi-btn">Primär</button>
+      <button class="pi-btn pi-btn--accent">Akzent</button>
+      <button class="pi-btn pi-btn--secondary">Sekundär</button>
+      <button class="pi-btn pi-btn--ghost">Ghost</button>
+      <button class="pi-btn pi-btn--text">Text-Link</button>
+      <button class="pi-btn" disabled>Disabled</button>
+    </div>
+    <div class="ds-demo" style="margin-top: var(--pi-space-3);">
+      <button class="pi-btn pi-btn--sm">Klein</button>
+      <button class="pi-btn">Standard</button>
+      <button class="pi-btn pi-btn--lg">Groß</button>
+    </div>
+    <div class="ds-demo ds-demo--dark pi-on-dark" style="margin-top: var(--pi-space-3);">
+      <button class="pi-btn pi-btn--accent">Akzent auf Dunkel</button>
+      <button class="pi-btn pi-btn--secondary">Sekundär auf Dunkel</button>
+      <button class="pi-btn pi-btn--ghost">Ghost auf Dunkel</button>
+    </div>
+    <pre class="ds-code">&lt;button class=<span class="t">"pi-btn pi-btn--accent"</span>&gt;Akzent&lt;/button&gt;
+&lt;button class=<span class="t">"pi-btn pi-btn--secondary"</span>&gt;Sekundär&lt;/button&gt;</pre>
+
+    <!-- Formulare -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Formulare</h3>
+    <div class="ds-grid ds-grid--2">
+      <div class="ds-demo ds-demo--stack">
+        <div class="pi-field"><label class="pi-label" for="d1">Vor- und Nachname</label><input class="pi-input" id="d1" placeholder="Maxima Musterfrau"></div>
+        <div class="pi-field"><label class="pi-label" for="d2">Bereich</label>
+          <select class="pi-select" id="d2"><option>Finanz-PR</option><option>Content &amp; Event</option><option>Marketing</option></select></div>
+        <div class="pi-field pi-field--error"><label class="pi-label" for="d3">E-Mail</label><input class="pi-input" id="d3" value="ungueltig@" aria-invalid="true"><span class="pi-error">Bitte eine gültige E-Mail-Adresse angeben.</span></div>
+      </div>
+      <div class="ds-demo ds-demo--stack">
+        <div class="pi-field"><label class="pi-label" for="d4">Nachricht</label><textarea class="pi-textarea" id="d4" placeholder="Worum geht es?"></textarea></div>
+        <label class="pi-check"><input type="checkbox" checked> Newsletter abonnieren</label>
+        <label class="pi-check"><input type="radio" name="r" checked> Mandant</label>
+        <label class="pi-check"><input type="radio" name="r"> Partner</label>
+        <div class="pi-field"><label class="pi-label" for="d5">Gesperrt</label><input class="pi-input" id="d5" value="Nicht editierbar" disabled></div>
+      </div>
+    </div>
+
+    <!-- Karten -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Karten</h3>
+    <div class="ds-grid ds-grid--3">
+      <article class="pi-card pi-card--interactive">
+        <span class="pi-kicker">01</span>
+        <h4 class="pi-h4" style="margin-top: var(--pi-space-3);">Substanz</h4>
+        <p class="pi-body" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Wir kommunizieren nichts, was wir nicht verstehen.</p>
+      </article>
+      <article class="pi-card pi-card--interactive">
+        <span class="pi-kicker">02</span>
+        <h4 class="pi-h4" style="margin-top: var(--pi-space-3);">Relevanz</h4>
+        <p class="pi-body" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Lautstärke erzeugt kein Vertrauen. Relevanz schon.</p>
+      </article>
+      <article class="pi-card pi-card--dark">
+        <span class="pi-kicker">03</span>
+        <h4 class="pi-h4" style="margin-top: var(--pi-space-3); color: var(--pi-kontor-leinen);">Vertrauen</h4>
+        <p class="pi-body pi-on-dark" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Dreißig Jahre Mandatstreue sprechen für sich.</p>
+      </article>
+    </div>
+
+    <!-- Badges, Tags, Note, Callouts -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Badges, Tags &amp; Hinweise</h3>
+    <div class="ds-demo">
+      <span class="pi-badge">Standard</span>
+      <span class="pi-badge pi-badge--accent">Akzent</span>
+      <span class="pi-badge pi-badge--positive">Erfolg</span>
+      <span class="pi-badge pi-badge--caution">Hinweis</span>
+      <span class="pi-badge pi-badge--critical">Fehler</span>
+      <span class="pi-tag">Finanz-PR</span>
+      <span class="pi-tag">Hamburg</span>
+    </div>
+    <div class="ds-grid ds-grid--2" style="margin-top: var(--pi-space-5);">
+      <div class="pi-note"><span class="pi-note__kicker">Regel</span><p class="pi-note__body">Honig-Gold tritt nur als Akzent auf — maximal 10 % der Fläche pro Ansicht.</p></div>
+      <div class="pi-callout pi-callout--caution">Diese Komponente nutzt eine gedeckte Hinweisfarbe — kein Neon, dem Brand treu.</div>
+    </div>
+
+    <!-- Tabs + Tabelle -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Tabs &amp; Tabelle</h3>
+    <div class="pi-tabs" role="tablist">
+      <button class="pi-tab" role="tab" aria-selected="true">Übersicht</button>
+      <button class="pi-tab" role="tab" aria-selected="false">Leistungen</button>
+      <button class="pi-tab" role="tab" aria-selected="false">Kontakt</button>
+    </div>
+    <table class="pi-table" style="margin-top: var(--pi-space-5);">
+      <thead><tr><th>Leistung</th><th>Format</th><th>Kanal</th></tr></thead>
+      <tbody>
+        <tr><td>Pressearbeit</td><td>Mitteilung</td><td>Print &amp; Online</td></tr>
+        <tr><td>Podcast</td><td>Audio</td><td>Studio One</td></tr>
+        <tr><td>Data-PR</td><td>Analyse</td><td>LinkedIn</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Trenner -->
+    <h3 class="pi-h3" style="margin: var(--pi-space-8) 0 var(--pi-space-5);">Trenner</h3>
+    <div class="ds-demo ds-demo--stack">
+      <hr class="pi-divider">
+      <hr class="pi-hairline">
+    </div>
+  </section>
+
+  <!-- ===================== FOLIEN ===================== -->
+  <section class="ds-section" id="slides">
+    <div class="ds-section__head">
+      <span class="pi-kicker">Präsentationen</span>
+      <h2 class="pi-h1" style="margin-top: var(--pi-space-3);">Folien-Templates (16:9)</h2>
+      <p class="pi-body" style="margin-top: var(--pi-space-4);">Acht Standard-Layouts — Cover, Kapitel, Content, Daten, Zitat, Bild, Schluss. Reines Urbanist, Gold-Akzentlinie rechts. Skaliert proportional über Container-Query-Units.</p>
+    </div>
+    <div class="ds-grid ds-grid--2">
+      <div class="pi-slide pi-slide--gruen pi-slide--accent">
+        <div class="pi-slide__inner pi-slide__inner--between pi-on-dark">
+          <div><span class="pi-slide-overline">Präsentation · 2026</span><h3 class="pi-slide-title" style="margin-top:2cqw;">Folien-Master</h3></div>
+          <div class="pi-slide-kicker">public imaging GmbH</div>
+        </div>
+        <div class="pi-slide-footer pi-on-dark"><img class="pi-slide-footer__logo" src="assets/logo/pi-logo-weiss.png" alt=""><span class="pi-slide-footer__page">01</span></div>
+      </div>
+      <div class="pi-slide pi-slide--gruen pi-slide--accent">
+        <div class="pi-slide__inner pi-on-dark">
+          <span class="pi-slide-overline">Erfolgsgeschichten</span>
+          <div class="pi-slide-stats" style="margin-top:1cqw;">
+            <div><div class="pi-slide-stat">9</div><div class="pi-slide-stat-label">Länder</div></div>
+            <div><div class="pi-slide-stat">30+</div><div class="pi-slide-stat-label">Jahre</div></div>
+            <div><div class="pi-slide-stat">50M</div><div class="pi-slide-stat-label">Reichweite</div></div>
+          </div>
+        </div>
+        <div class="pi-slide-footer pi-on-dark"><img class="pi-slide-footer__logo" src="assets/logo/pi-logo-weiss.png" alt=""><span class="pi-slide-footer__page">05</span></div>
+      </div>
+    </div>
+    <div style="margin-top: var(--pi-space-6);">
+      <a class="pi-btn pi-btn--accent" href="examples/slides.html">Alle 8 Templates ansehen</a>
+    </div>
+  </section>
+
+  <!-- ===================== FÜR KI ===================== -->
+  <section class="ds-section" id="ai">
+    <div class="ds-section__head">
+      <span class="pi-kicker">Für KI-Systeme</span>
+      <h2 class="pi-h1" style="margin-top: var(--pi-space-3);">Markentreue auf Knopfdruck</h2>
+      <p class="pi-body" style="margin-top: var(--pi-space-4);">Das System ist so gebaut, dass eine KI markenkonforme Präsentationen und Interfaces erzeugen kann. Drei maschinenlesbare Dateien liefern die ganze DNA.</p>
+    </div>
+    <div class="ds-grid ds-grid--3">
+      <article class="pi-card">
+        <h4 class="pi-h4">AI-GUIDE.md</h4>
+        <p class="pi-body" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Regeln, Do/Don'ts, Token-Namen und fertige Prompt-Vorlagen für KI.</p>
+        <div style="margin-top: var(--pi-space-4);"><a class="pi-link" href="ai/AI-GUIDE.md">Öffnen</a></div>
+      </article>
+      <article class="pi-card">
+        <h4 class="pi-h4">brand-dna.json</h4>
+        <p class="pi-body" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Die komplette Markenidentität strukturiert — Single Source of Truth.</p>
+        <div style="margin-top: var(--pi-space-4);"><a class="pi-link" href="ai/brand-dna.json">Öffnen</a></div>
+      </article>
+      <article class="pi-card">
+        <h4 class="pi-h4">tokens.json</h4>
+        <p class="pi-body" style="margin-top: var(--pi-space-2); font-size: var(--pi-text-sm);">Alle Design-Tokens in Maschinenform — Farbe, Schrift, Abstand, Bewegung.</p>
+        <div style="margin-top: var(--pi-space-4);"><a class="pi-link" href="tokens/tokens.json">Öffnen</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ds-section" style="text-align: center; padding-bottom: var(--pi-space-9);">
+    <img src="assets/logo/pi-logo-gruen.png" alt="public imaging" style="height: 28px; width: auto; margin: 0 auto var(--pi-space-5);">
+    <p class="pi-caption">public imaging — Design System · Version 1.0 · Schrift: Urbanist</p>
+    <p class="pi-caption" style="margin-top: var(--pi-space-2);">public imaging GmbH · Moorfuhrtweg 11 · 22301 Hamburg · publicimaging.de</p>
+  </footer>
+
+</div>
+
+<script>
+  // Tabs-Demo (nur Aktivzustand umschalten)
+  document.querySelectorAll('.pi-tabs').forEach(function (list) {
+    var tabs = list.querySelectorAll('.pi-tab');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+        tab.setAttribute('aria-selected', 'true');
+      });
+    });
+  });
+</script>
+</body>
+</html>
